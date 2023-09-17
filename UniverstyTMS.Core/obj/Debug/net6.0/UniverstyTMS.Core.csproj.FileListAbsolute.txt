@@ -1,0 +1,12 @@
+C:\Users\99470\Desktop\CA Final Project\BackEnd\UniverstyTMS\UniverstyTMS.Core\bin\Debug\net6.0\UniverstyTMS.Core.deps.json
+C:\Users\99470\Desktop\CA Final Project\BackEnd\UniverstyTMS\UniverstyTMS.Core\bin\Debug\net6.0\UniverstyTMS.Core.dll
+C:\Users\99470\Desktop\CA Final Project\BackEnd\UniverstyTMS\UniverstyTMS.Core\bin\Debug\net6.0\UniverstyTMS.Core.pdb
+C:\Users\99470\Desktop\CA Final Project\BackEnd\UniverstyTMS\UniverstyTMS.Core\obj\Debug\net6.0\UniverstyTMS.Core.csproj.AssemblyReference.cache
+C:\Users\99470\Desktop\CA Final Project\BackEnd\UniverstyTMS\UniverstyTMS.Core\obj\Debug\net6.0\UniverstyTMS.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\99470\Desktop\CA Final Project\BackEnd\UniverstyTMS\UniverstyTMS.Core\obj\Debug\net6.0\UniverstyTMS.Core.AssemblyInfoInputs.cache
+C:\Users\99470\Desktop\CA Final Project\BackEnd\UniverstyTMS\UniverstyTMS.Core\obj\Debug\net6.0\UniverstyTMS.Core.AssemblyInfo.cs
+C:\Users\99470\Desktop\CA Final Project\BackEnd\UniverstyTMS\UniverstyTMS.Core\obj\Debug\net6.0\UniverstyTMS.Core.csproj.CoreCompileInputs.cache
+C:\Users\99470\Desktop\CA Final Project\BackEnd\UniverstyTMS\UniverstyTMS.Core\obj\Debug\net6.0\UniverstyTMS.Core.dll
+C:\Users\99470\Desktop\CA Final Project\BackEnd\UniverstyTMS\UniverstyTMS.Core\obj\Debug\net6.0\refint\UniverstyTMS.Core.dll
+C:\Users\99470\Desktop\CA Final Project\BackEnd\UniverstyTMS\UniverstyTMS.Core\obj\Debug\net6.0\UniverstyTMS.Core.pdb
+C:\Users\99470\Desktop\CA Final Project\BackEnd\UniverstyTMS\UniverstyTMS.Core\obj\Debug\net6.0\ref\UniverstyTMS.Core.dll

@@ -1,0 +1,17 @@
+C:\Users\99470\Desktop\CA Final Project\BackEnd\UniverstyTMS\UniverstyTMS.Data\bin\Debug\net6.0\UniverstyTMS.Data.deps.json
+C:\Users\99470\Desktop\CA Final Project\BackEnd\UniverstyTMS\UniverstyTMS.Data\bin\Debug\net6.0\UniverstyTMS.Data.runtimeconfig.json
+C:\Users\99470\Desktop\CA Final Project\BackEnd\UniverstyTMS\UniverstyTMS.Data\bin\Debug\net6.0\UniverstyTMS.Data.dll
+C:\Users\99470\Desktop\CA Final Project\BackEnd\UniverstyTMS\UniverstyTMS.Data\bin\Debug\net6.0\UniverstyTMS.Data.pdb
+C:\Users\99470\Desktop\CA Final Project\BackEnd\UniverstyTMS\UniverstyTMS.Data\bin\Debug\net6.0\UniverstyTMS.Core.dll
+C:\Users\99470\Desktop\CA Final Project\BackEnd\UniverstyTMS\UniverstyTMS.Data\bin\Debug\net6.0\UniverstyTMS.Core.pdb
+C:\Users\99470\Desktop\CA Final Project\BackEnd\UniverstyTMS\UniverstyTMS.Data\obj\Debug\net6.0\UniverstyTMS.Data.csproj.AssemblyReference.cache
+C:\Users\99470\Desktop\CA Final Project\BackEnd\UniverstyTMS\UniverstyTMS.Data\obj\Debug\net6.0\UniverstyTMS.Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\99470\Desktop\CA Final Project\BackEnd\UniverstyTMS\UniverstyTMS.Data\obj\Debug\net6.0\UniverstyTMS.Data.AssemblyInfoInputs.cache
+C:\Users\99470\Desktop\CA Final Project\BackEnd\UniverstyTMS\UniverstyTMS.Data\obj\Debug\net6.0\UniverstyTMS.Data.AssemblyInfo.cs
+C:\Users\99470\Desktop\CA Final Project\BackEnd\UniverstyTMS\UniverstyTMS.Data\obj\Debug\net6.0\UniverstyTMS.Data.csproj.CoreCompileInputs.cache
+C:\Users\99470\Desktop\CA Final Project\BackEnd\UniverstyTMS\UniverstyTMS.Data\obj\Debug\net6.0\UniverstyTMS.Data.csproj.CopyComplete
+C:\Users\99470\Desktop\CA Final Project\BackEnd\UniverstyTMS\UniverstyTMS.Data\obj\Debug\net6.0\UniverstyTMS.Data.dll
+C:\Users\99470\Desktop\CA Final Project\BackEnd\UniverstyTMS\UniverstyTMS.Data\obj\Debug\net6.0\refint\UniverstyTMS.Data.dll
+C:\Users\99470\Desktop\CA Final Project\BackEnd\UniverstyTMS\UniverstyTMS.Data\obj\Debug\net6.0\UniverstyTMS.Data.pdb
+C:\Users\99470\Desktop\CA Final Project\BackEnd\UniverstyTMS\UniverstyTMS.Data\obj\Debug\net6.0\UniverstyTMS.Data.genruntimeconfig.cache
+C:\Users\99470\Desktop\CA Final Project\BackEnd\UniverstyTMS\UniverstyTMS.Data\obj\Debug\net6.0\ref\UniverstyTMS.Data.dll
