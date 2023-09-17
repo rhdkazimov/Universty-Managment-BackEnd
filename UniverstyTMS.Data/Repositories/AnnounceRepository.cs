@@ -10,7 +10,6 @@ namespace UniverstyTMS.Data.Repositories
 {
     public class AnnounceRepository : Repository<Announce>,IAnnounceRepository
     {
-
         public AnnounceRepository(UniverstyDbContext context):base(context)
         {
         }

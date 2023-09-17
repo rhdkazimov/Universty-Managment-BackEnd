@@ -1,9 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UniverstyTMS.Core.Entities;
 using UniverstyTMS.Data.Configurations;
 
@@ -16,6 +11,13 @@ namespace UniverstyTMS.Data
         }
 
         public DbSet<Announce> Announces { get; set; }
+        public DbSet<Faculty> Facultys { get; set; }
+        public DbSet<Group> Groups { get; set; }
+        public DbSet<Settings> Settings { get; set; }
+        public DbSet<Specialty> Specialties { get; set; }
+        public DbSet<Student> Students { get; set; }
+        public DbSet<Teacher> Teachers { get; set; }
+        public DbSet<Core.Entities.Type> Types { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

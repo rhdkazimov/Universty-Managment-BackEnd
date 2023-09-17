@@ -21,6 +21,13 @@ builder.Services.AddDbContext<UniverstyDbContext>(opt =>
 });
 
 builder.Services.AddScoped<IAnnounceRepository, AnnounceRepository>();
+builder.Services.AddScoped<ISettingsRepository, SettingsRepository>();
+builder.Services.AddScoped<IGroupRepository, GroupRepository>();
+builder.Services.AddScoped<IStudentRepository, StudentRepository>();
+builder.Services.AddScoped<ITypeRepository, TypeRepository>();
+builder.Services.AddScoped<IFacultyRepository, FacultyRepository>();
+builder.Services.AddScoped<ISpecialtyRepository, SpecialtyRepository>();
+builder.Services.AddScoped<ITeacherRepository, TeacherRepository>();
 
 builder.Services.AddFluentValidationRulesToSwagger();
 
