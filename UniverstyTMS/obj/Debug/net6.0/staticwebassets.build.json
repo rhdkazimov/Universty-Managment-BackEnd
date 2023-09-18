@@ -1,11 +1,37 @@
 {
   "Version": 1,
-  "Hash": "zrYmfImqnGhpl929FXoXY/NJK7XTopFOjnKWJlRUdKc=",
+  "Hash": "ah8+y802v6BlzyGxSiRawpCycMTvpj40353cQyoM/QQ=",
   "Source": "UniverstyTMS",
   "BasePath": "_content/UniverstyTMS",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
-  "Assets": []
+  "DiscoveryPatterns": [
+    {
+      "Name": "UniverstyTMS\\wwwroot",
+      "Source": "UniverstyTMS",
+      "ContentRoot": "C:\\Users\\99470\\Desktop\\CA Final Project\\BackEnd\\UniverstyTMS\\UniverstyTMS\\wwwroot\\",
+      "BasePath": "_content/UniverstyTMS",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\99470\\Desktop\\CA Final Project\\BackEnd\\UniverstyTMS\\UniverstyTMS\\wwwroot\\uploads\\teachers\\ab3d0e84-a076-475f-abd2-c7051ae222d609bf7a72e69611c35f77c4ae4a97cc083ace1a4c_full.jpg",
+      "SourceId": "UniverstyTMS",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\99470\\Desktop\\CA Final Project\\BackEnd\\UniverstyTMS\\UniverstyTMS\\wwwroot\\",
+      "BasePath": "_content/UniverstyTMS",
+      "RelativePath": "uploads/teachers/ab3d0e84-a076-475f-abd2-c7051ae222d609bf7a72e69611c35f77c4ae4a97cc083ace1a4c_full.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\teachers\\ab3d0e84-a076-475f-abd2-c7051ae222d609bf7a72e69611c35f77c4ae4a97cc083ace1a4c_full.jpg"
+    }
+  ]
 }

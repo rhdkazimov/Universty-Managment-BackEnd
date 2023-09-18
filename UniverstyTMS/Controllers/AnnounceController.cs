@@ -25,12 +25,8 @@ namespace UniverstyTMS.Controllers
         [HttpPost("")]
         public IActionResult Create(AnnouncePostDto postDto)
         {
-            Announce announce = new Announce
-            {
-                HeaderInfo = postDto.HeaderInfo,
-                MainInfo = postDto.MainInfo,
-                Date = DateTime.Now.ToString("dd/MM/yyyy")
-            };
+            Announce announce = _mapper.Map<Announce>(postDto);
+            announce.Date = DateTime.Now.ToString("dd/MM/yyyy");
 
             _announceRepository.Add(announce);
             _announceRepository.Commit();
@@ -54,8 +50,7 @@ namespace UniverstyTMS.Controllers
         [HttpGet("all")] 
         public ActionResult<List<AnnounceGetDto>> GetAll()
         {
-            var data = _announceRepository.GetAllQueryable(x=>true).Select(x=>new AnnounceGetDto { Id = x.Id, HeaderInfo = x.HeaderInfo,MainInfo = x.MainInfo,Date = x.Date});
-        
+            var data = _mapper.Map<List<AnnounceGetDto>>(_announceRepository.GetAll(x=>true));
             return Ok(data);
         }
     }

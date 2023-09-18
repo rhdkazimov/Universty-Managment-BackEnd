@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using UniverstyTMS.Core.Entities;
 using UniverstyTMS.Core.Repositories;
 using UniverstyTMS.Data.Repositories;
@@ -14,19 +16,17 @@ namespace UniverstyTMS.Controllers
     public class FacultyController : ControllerBase
     {
         private readonly IFacultyRepository _facultyRepository;
+        private readonly IMapper _mapper;
 
-        public FacultyController(IFacultyRepository facultyRepository) {
+        public FacultyController(IFacultyRepository facultyRepository,IMapper mapper) {
             _facultyRepository = facultyRepository;
+            _mapper = mapper;
         }
 
         [HttpPost("")]
         public IActionResult Create(FacultyPostDto postDto)
         {
-            Faculty faculty = new Faculty
-            {
-                Name = postDto.Name,
-                Code = postDto.Code,
-            };
+            Faculty faculty = _mapper.Map<Faculty>(postDto);
 
             _facultyRepository.Add(faculty);
             _facultyRepository.Commit();
@@ -51,7 +51,7 @@ namespace UniverstyTMS.Controllers
         [HttpGet("all")]
         public ActionResult<List<FacultyGetDto>> GetAll()
         {
-            var data = _facultyRepository.GetAllQueryable(x => true).Select(x => new FacultyGetDto { Id = x.Id, Name = x.Name, Code = x.Code });
+            var data = _mapper.Map<List<FacultyGetDto>>(_facultyRepository.GetAll(x => true));
 
             return Ok(data);
         }

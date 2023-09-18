@@ -76,3 +76,4 @@ C:\Users\99470\Desktop\CA Final Project\BackEnd\UniverstyTMS\UniverstyTMS\obj\De
 C:\Users\99470\Desktop\CA Final Project\BackEnd\UniverstyTMS\UniverstyTMS\obj\Debug\net6.0\UniverstyTMS.pdb
 C:\Users\99470\Desktop\CA Final Project\BackEnd\UniverstyTMS\UniverstyTMS\obj\Debug\net6.0\UniverstyTMS.genruntimeconfig.cache
 C:\Users\99470\Desktop\CA Final Project\BackEnd\UniverstyTMS\UniverstyTMS\obj\Debug\net6.0\ref\UniverstyTMS.dll
+C:\Users\99470\Desktop\CA Final Project\BackEnd\UniverstyTMS\UniverstyTMS\bin\Debug\net6.0\UniverstyTMS.staticwebassets.runtime.json

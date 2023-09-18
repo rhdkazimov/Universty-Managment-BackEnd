@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using UniverstyTMS.Core.Entities;
 using UniverstyTMS.Core.Repositories;
@@ -13,20 +14,18 @@ namespace UniverstyTMS.Controllers
     public class TypeController : ControllerBase
     {
         private readonly ITypeRepository _typeRepository;
+        private readonly IMapper _mapper;
 
-        public TypeController(ITypeRepository typeRepository)
+        public TypeController(ITypeRepository typeRepository,IMapper mapper)
         {
             _typeRepository = typeRepository;
+            _mapper = mapper;
         }
-
 
         [HttpPost("")]
         public IActionResult Create(TypePostDto postDto)
         {
-            Core.Entities.Type type = new Core.Entities.Type
-            {
-                Name = postDto.Name,
-            };
+            Core.Entities.Type type = _mapper.Map<Core.Entities.Type>(postDto);
 
             _typeRepository.Add(type);
             _typeRepository.Commit();
@@ -51,7 +50,7 @@ namespace UniverstyTMS.Controllers
         [HttpGet("all")]
         public ActionResult<List<TypeGetDto>> GetAll()
         {
-            var data = _typeRepository.GetAllQueryable(x => true).Select(x => new TypeGetDto { Id = x.Id, Name = x.Name });
+            var data = _mapper.Map<List<TypeGetDto>>(_typeRepository.GetAll(x=>true));
 
             return Ok(data);
         }

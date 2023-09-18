@@ -5,12 +5,13 @@ namespace UniverstyTMS.Dtos.SpecialtyDtos
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public int FacultyId { get; set; }
-        //public FacultyInSpecialtyGetDto Faculty { get; set; }
+        //public int FacultyId { get; set; }
+        public FacultyInSpecialtyGetDto Faculty { get; set; }
     }
 
     public class FacultyInSpecialtyGetDto
     {
+        public int Id { get; set; }
         public string Name { get; set; }
     }
 }

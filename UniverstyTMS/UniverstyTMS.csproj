@@ -21,4 +21,8 @@
     <ProjectReference Include="..\UniverstyTMS.Data\UniverstyTMS.Data.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\uploads\teachers\" />
+  </ItemGroup>
+
 </Project>

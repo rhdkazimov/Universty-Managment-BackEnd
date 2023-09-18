@@ -23,11 +23,7 @@ namespace UniverstyTMS.Controllers
         [HttpPost("")]
         public IActionResult Create(SettingPostDto postDto)
         {
-            Settings settings = new Settings
-            {
-                Key = postDto.Key,
-                Value = postDto.Value,
-            };
+            Settings settings = _mapper.Map<Settings>(postDto);
 
             _settingsRepository.Add(settings);
             _settingsRepository.Commit();
@@ -52,8 +48,7 @@ namespace UniverstyTMS.Controllers
         [HttpGet("all")]
         public ActionResult<List<SettingGetDto>> GetAll()
         {
-            var data = _settingsRepository.GetAllQueryable(x => true).Select(x => new SettingGetDto { Id = x.Id, Key = x.Key, Value = x.Value });
-
+            var data = _mapper.Map<List<SettingGetDto>>(_settingsRepository.GetAll(x=>true));
             return Ok(data);
         }
 
