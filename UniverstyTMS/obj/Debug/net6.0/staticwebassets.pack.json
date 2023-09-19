@@ -1,6 +1,10 @@
 {
   "Files": [
     {
+      "Id": "C:\\Users\\99470\\Desktop\\CA Final Project\\BackEnd\\UniverstyTMS\\UniverstyTMS\\wwwroot\\uploads\\students\\d3457091-44a0-44bf-bc7d-21d1bc99f39009bf7a72e69611c35f77c4ae4a97cc083ace1a4c_full.jpg",
+      "PackagePath": "staticwebassets\\uploads\\students\\d3457091-44a0-44bf-bc7d-21d1bc99f39009bf7a72e69611c35f77c4ae4a97cc083ace1a4c_full.jpg"
+    },
+    {
       "Id": "C:\\Users\\99470\\Desktop\\CA Final Project\\BackEnd\\UniverstyTMS\\UniverstyTMS\\wwwroot\\uploads\\teachers\\ab3d0e84-a076-475f-abd2-c7051ae222d609bf7a72e69611c35f77c4ae4a97cc083ace1a4c_full.jpg",
       "PackagePath": "staticwebassets\\uploads\\teachers\\ab3d0e84-a076-475f-abd2-c7051ae222d609bf7a72e69611c35f77c4ae4a97cc083ace1a4c_full.jpg"
     },

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "ah8+y802v6BlzyGxSiRawpCycMTvpj40353cQyoM/QQ=",
+  "Hash": "1r5XOnVV+uGE3GaAA9b1M9r4qL2AlsUyvNNq1Bu2Sqo=",
   "Source": "UniverstyTMS",
   "BasePath": "_content/UniverstyTMS",
   "Mode": "Default",
@@ -16,6 +16,23 @@
     }
   ],
   "Assets": [
+    {
+      "Identity": "C:\\Users\\99470\\Desktop\\CA Final Project\\BackEnd\\UniverstyTMS\\UniverstyTMS\\wwwroot\\uploads\\students\\d3457091-44a0-44bf-bc7d-21d1bc99f39009bf7a72e69611c35f77c4ae4a97cc083ace1a4c_full.jpg",
+      "SourceId": "UniverstyTMS",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\99470\\Desktop\\CA Final Project\\BackEnd\\UniverstyTMS\\UniverstyTMS\\wwwroot\\",
+      "BasePath": "_content/UniverstyTMS",
+      "RelativePath": "uploads/students/d3457091-44a0-44bf-bc7d-21d1bc99f39009bf7a72e69611c35f77c4ae4a97cc083ace1a4c_full.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\students\\d3457091-44a0-44bf-bc7d-21d1bc99f39009bf7a72e69611c35f77c4ae4a97cc083ace1a4c_full.jpg"
+    },
     {
       "Identity": "C:\\Users\\99470\\Desktop\\CA Final Project\\BackEnd\\UniverstyTMS\\UniverstyTMS\\wwwroot\\uploads\\teachers\\ab3d0e84-a076-475f-abd2-c7051ae222d609bf7a72e69611c35f77c4ae4a97cc083ace1a4c_full.jpg",
       "SourceId": "UniverstyTMS",

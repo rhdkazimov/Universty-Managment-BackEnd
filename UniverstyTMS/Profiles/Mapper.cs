@@ -5,6 +5,7 @@ using UniverstyTMS.Dtos.FacultyDtos;
 using UniverstyTMS.Dtos.GroupDtos;
 using UniverstyTMS.Dtos.SettingDtos;
 using UniverstyTMS.Dtos.SpecialtyDtos;
+using UniverstyTMS.Dtos.StudentDtos;
 using UniverstyTMS.Dtos.TeacherDtos;
 using UniverstyTMS.Dtos.TypeDtos;
 
@@ -37,6 +38,12 @@ namespace UniverstyTMS.Profiles
             CreateMap<Faculty,FacultyInGroupGetDto>();
             CreateMap<Specialty, SpecialtyInGroupGetDto>();
             //CreateMap<Student, StudentsInGroupGetDto>();
+            CreateMap<Student,StudentGetDto>();
+            CreateMap<Group,GroupInStudentGetDto>();
+            CreateMap<Core.Entities.Type, TypeInStudentGetDto>();
+            CreateMap<StudentPostDto, Student>();
+            CreateMap<Student, StudentLoginGetDto>();
+            CreateMap<Teacher, TeacherLoginGetDto>();
         }
     }
 }
