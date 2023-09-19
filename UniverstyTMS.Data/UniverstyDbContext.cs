@@ -18,6 +18,9 @@ namespace UniverstyTMS.Data
         public DbSet<Student> Students { get; set; }
         public DbSet<Teacher> Teachers { get; set; }
         public DbSet<Core.Entities.Type> Types { get; set; }
+        public DbSet<Grades> Grades { get; set; }
+        public DbSet<Lesson> Lessons { get; set; }
+        public DbSet<GroupLessons> GroupLessons { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

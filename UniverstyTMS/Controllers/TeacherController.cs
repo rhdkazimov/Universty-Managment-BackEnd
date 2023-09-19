@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using UniverstyTMS.Core.Entities;
 using UniverstyTMS.Core.Repositories;
 using UniverstyTMS.Data.Repositories;
+using UniverstyTMS.Dtos.GroupDtos;
 using UniverstyTMS.Dtos.SettingDtos;
 using UniverstyTMS.Dtos.SpecialtyDtos;
 using UniverstyTMS.Dtos.TeacherDtos;
@@ -15,11 +16,15 @@ namespace UniverstyTMS.Controllers
     public class TeacherController : ControllerBase
     {
         private readonly ITeacherRepository _teacherRepository;
+        private readonly IGroupRepository _groupRepository;
+        private readonly IStudentRepository _studentRepository;
         private readonly IMapper _mapper;
 
-        public TeacherController(ITeacherRepository teacherRepository,IMapper mapper)
+        public TeacherController(ITeacherRepository teacherRepository,IGroupRepository groupRepository,IStudentRepository studentRepository,IMapper mapper)
         {
             _teacherRepository = teacherRepository;
+            _groupRepository = groupRepository;
+            _studentRepository = studentRepository;
             _mapper = mapper;
         }
 
@@ -69,5 +74,26 @@ namespace UniverstyTMS.Controllers
 
             return NoContent();
         }
+
+        [HttpGet("groups/{id}")]
+        public ActionResult<GroupStudentsGetDto> GetGroups(int id)
+        {
+            Group group = _groupRepository.Get(x => x.Id == id);
+            if (group == null) return NotFound();
+
+            var data = _mapper.Map<GroupStudentsGetDto>(group);
+
+            //List<Student> students = _studentRepository.GetAll(x => x.GroupId == group.Id);
+            var studentsData = _mapper.Map<List<StudentInGroupGetDto>>(_studentRepository.GetAll(x => x.GroupId == group.Id));
+
+            foreach (var student in studentsData)
+            {
+            data.Students.Add(student);
+            }
+
+
+            return Ok(data);
+        } 
+
     }
 }

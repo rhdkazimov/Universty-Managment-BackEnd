@@ -71,6 +71,47 @@ namespace UniverstyTMS.Data.Migrations
                     b.ToTable("Facultys");
                 });
 
+            modelBuilder.Entity("UniverstyTMS.Core.Entities.Grades", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("LessonId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ORT")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SDF1")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SDF2")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SDF3")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SSI")
+                        .HasColumnType("int");
+
+                    b.Property<int>("StudentId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TSI")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("LessonId");
+
+                    b.HasIndex("StudentId");
+
+                    b.ToTable("Grades");
+                });
+
             modelBuilder.Entity("UniverstyTMS.Core.Entities.Group", b =>
                 {
                     b.Property<int>("Id")
@@ -97,6 +138,51 @@ namespace UniverstyTMS.Data.Migrations
                     b.HasIndex("TeacherId");
 
                     b.ToTable("Groups");
+                });
+
+            modelBuilder.Entity("UniverstyTMS.Core.Entities.GroupLessons", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("GroupId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("LessonId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("GroupId");
+
+                    b.HasIndex("LessonId");
+
+                    b.ToTable("GroupLessons");
+                });
+
+            modelBuilder.Entity("UniverstyTMS.Core.Entities.Lesson", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("FacultyId")
+                        .HasMaxLength(20)
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Lessons");
                 });
 
             modelBuilder.Entity("UniverstyTMS.Core.Entities.Settings", b =>
@@ -284,6 +370,25 @@ namespace UniverstyTMS.Data.Migrations
                     b.ToTable("Types");
                 });
 
+            modelBuilder.Entity("UniverstyTMS.Core.Entities.Grades", b =>
+                {
+                    b.HasOne("UniverstyTMS.Core.Entities.Lesson", "Lesson")
+                        .WithMany()
+                        .HasForeignKey("LessonId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("UniverstyTMS.Core.Entities.Student", "Student")
+                        .WithMany()
+                        .HasForeignKey("StudentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Lesson");
+
+                    b.Navigation("Student");
+                });
+
             modelBuilder.Entity("UniverstyTMS.Core.Entities.Group", b =>
                 {
                     b.HasOne("UniverstyTMS.Core.Entities.Specialty", "Specialty")
@@ -297,6 +402,25 @@ namespace UniverstyTMS.Data.Migrations
                         .HasForeignKey("TeacherId");
 
                     b.Navigation("Specialty");
+                });
+
+            modelBuilder.Entity("UniverstyTMS.Core.Entities.GroupLessons", b =>
+                {
+                    b.HasOne("UniverstyTMS.Core.Entities.Group", "Group")
+                        .WithMany()
+                        .HasForeignKey("GroupId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("UniverstyTMS.Core.Entities.Lesson", "Lesson")
+                        .WithMany()
+                        .HasForeignKey("LessonId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Group");
+
+                    b.Navigation("Lesson");
                 });
 
             modelBuilder.Entity("UniverstyTMS.Core.Entities.Specialty", b =>
