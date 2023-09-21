@@ -24,10 +24,10 @@ namespace UniverstyTMS.Controllers
         }
 
         [HttpGet("all")]
-        public ActionResult<List<LessonGetDto>> Get() 
-            
+        public ActionResult<List<LessonGetDto>> GetAll() 
         {
-            var data = _mapper.Map<LessonGetDto>(_lessonRepository.GetAll(X => true, "Faculty"));
+            var data = _mapper.Map<List<LessonGetDto>>(_lessonRepository.GetAll(X => true));
+
             return Ok(data);
         }
 

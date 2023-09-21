@@ -3,8 +3,8 @@
     public class GroupLessonsGetDto
     {
         public int Id { get; set; }
-        //public GroupInGroupLessonGetDto Group { get; set; }
-        //public LessonInGroupLessonGetDto Lesson { get; set; }
+        public GroupInGroupLessonGetDto Group { get; set; }
+        public LessonInGroupLessonGetDto Lesson { get; set; }
     }
 
     public class GroupInGroupLessonGetDto {

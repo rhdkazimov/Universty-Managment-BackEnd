@@ -2,6 +2,7 @@
 using UniverstyTMS.Core.Entities;
 using UniverstyTMS.Dtos.AnnounceDtos;
 using UniverstyTMS.Dtos.FacultyDtos;
+using UniverstyTMS.Dtos.GradeDtos;
 using UniverstyTMS.Dtos.GroupDtos;
 using UniverstyTMS.Dtos.GroupLessonDtos;
 using UniverstyTMS.Dtos.LessonDtos;
@@ -51,9 +52,17 @@ namespace UniverstyTMS.Profiles
             CreateMap<Student, StudentInGroupGetDto>();
             //
             CreateMap<Lesson, LessonGetDto>();
-            CreateMap<Faculty, FacultyInLessonGetDto>();
             CreateMap<LessonPostDto,Lesson>();
             CreateMap<GroupLessons,GroupLessonsGetDto>();
+            CreateMap<GroupLessonsPostDto,GroupLessons>();
+
+            CreateMap<Group, GroupInGroupLessonGetDto>();
+            CreateMap<Lesson, LessonInGroupLessonGetDto>();
+
+            CreateMap<Grades,GradeGetDto>();
+            CreateMap<Student, StudentInGradeGetDto>();
+            CreateMap<Lesson, LessonInGradeGetDto>();
+            CreateMap<GradePostDto,Grades>();
         }
     }
 }

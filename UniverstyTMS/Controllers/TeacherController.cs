@@ -75,7 +75,7 @@ namespace UniverstyTMS.Controllers
             return NoContent();
         }
 
-        [HttpGet("groups/{id}")]
+        [HttpGet("group/students/{id}")]
         public ActionResult<GroupStudentsGetDto> GetGroups(int id)
         {
             Group group = _groupRepository.Get(x => x.Id == id);
@@ -90,7 +90,6 @@ namespace UniverstyTMS.Controllers
             {
             data.Students.Add(student);
             }
-
 
             return Ok(data);
         } 
