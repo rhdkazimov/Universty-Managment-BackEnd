@@ -27,7 +27,7 @@ namespace UniverstyTMS.Controllers
         {
              string[] includes = { "Lesson", "Group" };
 
-            return Ok(_mapper.Map<List<GroupLessonsGetDto>>(_groupLessonRepository.GetAll(X => true, "Lesson", "Group")));
+            return Ok(_mapper.Map<List<GroupLessonsGetDto>>(_groupLessonRepository.GetAll(X => true, "Lesson", "Group","Teacher")));
         }
 
         [HttpPost("")]

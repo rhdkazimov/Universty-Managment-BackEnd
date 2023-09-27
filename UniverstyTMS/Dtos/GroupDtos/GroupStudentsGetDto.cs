@@ -11,7 +11,14 @@ namespace UniverstyTMS.Dtos.GroupDtos
 
     public class StudentInGroupGetDto
     {
+        public int Id { get; set; }
         public string FirstName { get; set; }
         public string SurName { get; set; }
+        public int SDF1 { get; set; }
+        public int SDF2 { get; set; }
+        public int SDF3 { get; set; }
+        public int TSI { get; set; }
+        public int SSI { get; set; }
+        public int ORT { get; set; }
     }
 }

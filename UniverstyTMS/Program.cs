@@ -31,6 +31,7 @@ builder.Services.AddScoped<ITeacherRepository, TeacherRepository>();
 builder.Services.AddScoped<IGradesRepository, GradesRepository>();
 builder.Services.AddScoped<ILessonRepository, LessonRepository>();
 builder.Services.AddScoped<IGroupLessonRepository, GroupLessonRepository>();
+builder.Services.AddScoped<IAttanceRepository, AttanceRepository>();
 
 builder.Services.AddFluentValidationRulesToSwagger();
 
@@ -42,7 +43,29 @@ builder.Services.AddAutoMapper(opt =>
     opt.AddProfile(new Mapper());
 });
 
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: MyAllowSpecificOrigins,
+        builder =>
+        {
+            builder.WithOrigins("http://localhost",
+                "http://localhost:4200",
+                "https://localhost:7230",
+                "http://localhost:90",
+                "http://localhost:3000")
+            .AllowAnyMethod()
+            .AllowAnyHeader()
+            .SetIsOriginAllowedToAllowWildcardSubdomains();
+        });
+});
 var app = builder.Build();
+app.UseCors(MyAllowSpecificOrigins);
+app.UseDefaultFiles();
+app.UseRouting();
+app.UseStaticFiles();
+
 
 if (app.Environment.IsDevelopment())
 {

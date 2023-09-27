@@ -7,6 +7,7 @@ namespace UniverstyTMS.Dtos.GroupLessonDtos
     {
         public int GroupId { get; set; }
         public int LessonId { get; set; }
+        public int TeacherId { get; set; }
     }
 
     public class GroupLessonsPostDtoValidator : AbstractValidator<GroupLessonsPostDto>
@@ -15,6 +16,7 @@ namespace UniverstyTMS.Dtos.GroupLessonDtos
         {
             RuleFor(x => x.GroupId).NotEmpty();
             RuleFor(x => x.LessonId).NotEmpty();
+            RuleFor(x => x.TeacherId).NotEmpty();
         }
     }
 }

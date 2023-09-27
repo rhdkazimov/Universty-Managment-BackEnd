@@ -5,6 +5,7 @@
         public int Id { get; set; }
         public GroupInGroupLessonGetDto Group { get; set; }
         public LessonInGroupLessonGetDto Lesson { get; set; }
+        public TeacherInGroupLessonGetDto Teacher { get; set; }
     }
 
     public class GroupInGroupLessonGetDto {
@@ -18,4 +19,10 @@
         public string Name { get; set; }
     }
 
+    public class TeacherInGroupLessonGetDto
+    {
+        public int Id { get; set; }
+        public string FirstName { get; set; }
+        public string SurName { get; set; }
+    }
 }

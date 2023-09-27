@@ -11,7 +11,9 @@ namespace UniverstyTMS.Core.Entities
         public int Id { get; set; }
         public int GroupId { get; set; }
         public int LessonId { get; set; }
+        public int TeacherId { get; set; }
         public Group Group { get; set; }
+        public Teacher Teacher { get; set; } 
         public Lesson Lesson { get; set; }
     }
 }

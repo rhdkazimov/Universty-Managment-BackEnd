@@ -21,6 +21,7 @@ namespace UniverstyTMS.Data
         public DbSet<Grades> Grades { get; set; }
         public DbSet<Lesson> Lessons { get; set; }
         public DbSet<GroupLessons> GroupLessons { get; set; }
+        public DbSet<Attance> Attances { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -28,5 +29,6 @@ namespace UniverstyTMS.Data
 
             base.OnModelCreating(modelBuilder);
         }
+
     }
 }

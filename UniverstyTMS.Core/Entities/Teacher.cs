@@ -23,6 +23,7 @@ namespace UniverstyTMS.Core.Entities
 
         public Type Type { get; set; }
         public Faculty Faculty { get; set; }
-        public List<Group> Groups { get; set; }
+        public List<GroupLessons> GroupLessons { get; set; } = new List<GroupLessons>();
+
     }
 }

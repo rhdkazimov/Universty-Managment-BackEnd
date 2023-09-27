@@ -46,5 +46,24 @@ namespace UniverstyTMS.Controllers
             return Ok(data);
         }
 
+        [HttpPut("lesson/{id}")]
+        public ActionResult Edit(int id, List<GradePutDto> putDtos)
+        {
+            foreach (var putDto in putDtos)
+            {
+                Grades grade = _gradesRepository.Get(x => x.StudentId == putDto.Id && x.LessonId == id);
+                if(grade != null)
+                {
+                    grade.SDF1 = putDto.SDF1;
+                    grade.SDF2 = putDto.SDF2;
+                    grade.SDF3 = putDto.SDF3;
+                    grade.SSI = putDto.SSI;
+                    grade.TSI = putDto.TSI;
+                    grade.ORT = ((putDto.SDF1 + putDto.SDF2 + putDto.SDF3 + putDto.TSI) * 10 / 100) + (putDto.SSI / 2) + 10;
+                    _gradesRepository.Commit();
+                }
+            }
+            return NoContent();
+        }
     }
 }

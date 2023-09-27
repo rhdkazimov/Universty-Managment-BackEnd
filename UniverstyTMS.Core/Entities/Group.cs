@@ -7,10 +7,10 @@ namespace UniverstyTMS.Core.Entities
         public string GroupCode { get; set; }
         //public int TeacherId { get; set; }
         public int SpecialtyId { get; set; }
-
-
         public Specialty Specialty { get; set; }
         //public Teacher Teacher { get; set;}
+
+        public List<GroupLessons> GroupLessons { get; set; } = new List<GroupLessons>();
         public List<Student> Students { get; set; } = new List<Student>();
     }
 }

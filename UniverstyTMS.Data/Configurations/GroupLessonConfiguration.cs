@@ -15,6 +15,7 @@ namespace UniverstyTMS.Data.Configurations
         {
             builder.Property(x => x.GroupId).IsRequired(true);
             builder.Property(x => x.LessonId).IsRequired(true);
+            builder.HasOne(x=>x.Teacher).WithMany(x=>x.GroupLessons).OnDelete(DeleteBehavior.NoAction);
         }
     }
 }

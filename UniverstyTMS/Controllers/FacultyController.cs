@@ -16,10 +16,12 @@ namespace UniverstyTMS.Controllers
     public class FacultyController : ControllerBase
     {
         private readonly IFacultyRepository _facultyRepository;
+        private readonly ILessonRepository _lessonRepository;
         private readonly IMapper _mapper;
 
-        public FacultyController(IFacultyRepository facultyRepository,IMapper mapper) {
+        public FacultyController(IFacultyRepository facultyRepository,ILessonRepository lessonRepository,IMapper mapper) {
             _facultyRepository = facultyRepository;
+            _lessonRepository = lessonRepository;
             _mapper = mapper;
         }
 
@@ -30,7 +32,6 @@ namespace UniverstyTMS.Controllers
 
             _facultyRepository.Add(faculty);
             _facultyRepository.Commit();
-
             return StatusCode(201, new { faculty.Id });
         }
 
@@ -69,6 +70,32 @@ namespace UniverstyTMS.Controllers
             _facultyRepository.Commit();
 
             return NoContent();
+        }
+
+        [HttpGet("programs")]
+        public ActionResult<List<FacultyProgramsGetDto>> ProgramsGet()
+        {
+
+            var data = _mapper.Map<List<FacultyProgramsGetDto>>(_facultyRepository.GetAll(x=>true));
+            foreach (var item in data)
+            {
+                var lessons = _mapper.Map<List<LessonInFacultyProgramsGetDto>>(_lessonRepository.GetAll(x => x.FacultyId == item.Id));
+                if(lessons.Count > 0)
+                {
+                foreach (var ls in lessons)
+                {
+                    item.Lessons.Add(ls);
+                }
+                }
+            }
+            return Ok(data);
+        }
+
+        [HttpGet("programs/{id}")]
+        public ActionResult<List<LessonInFacultyProgramsGetDto>> ProgramsGetById(int id)
+        {
+                var data = _mapper.Map<List<LessonInFacultyProgramsGetDto>>(_lessonRepository.GetAll(x => x.FacultyId == id));
+            return Ok(data);
         }
     }
 }
