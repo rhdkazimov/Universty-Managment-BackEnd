@@ -72,6 +72,31 @@ namespace UniverstyTMS.Data.Migrations
                     b.ToTable("Attances");
                 });
 
+            modelBuilder.Entity("UniverstyTMS.Core.Entities.ContactForm", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Contact")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Header")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Text")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ContactForms");
+                });
+
             modelBuilder.Entity("UniverstyTMS.Core.Entities.Faculty", b =>
                 {
                     b.Property<int>("Id")
@@ -197,6 +222,9 @@ namespace UniverstyTMS.Data.Migrations
 
                     b.Property<int>("FacultyId")
                         .HasMaxLength(20)
+                        .HasColumnType("int");
+
+                    b.Property<int>("Hours")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")

@@ -15,12 +15,18 @@ namespace UniverstyTMS.Controllers
     public class AttanceController : ControllerBase
     {
         private readonly IAttanceRepository _attanceRepository;
+        private readonly ITeacherRepository _teacherRepository;
+        private readonly IGroupLessonRepository _groupLessonRepository;
         private readonly IStudentRepository _studentRepository;
+        private readonly ILessonRepository _lessonRepository;
         private readonly IMapper _mapper;
 
-        public AttanceController(IAttanceRepository attanceRepository,IStudentRepository studentRepository,IMapper mapper)
+        public AttanceController(IAttanceRepository attanceRepository,ITeacherRepository teacherRepository,IGroupLessonRepository groupLessonRepository ,ILessonRepository lessonRepsository, IStudentRepository studentRepository, IMapper mapper)
         {
             _attanceRepository = attanceRepository;
+            _teacherRepository = teacherRepository;
+            _groupLessonRepository = groupLessonRepository;
+            _lessonRepository = lessonRepsository;
             _studentRepository = studentRepository;
             _mapper = mapper;
         }
@@ -30,7 +36,9 @@ namespace UniverstyTMS.Controllers
         {
             //Attance attance = _mapper.Map<Attance>(postDto);
 
-            for(int i = 0; i < postDto.AttanceCount-1; i++)
+            Lesson lesson = _lessonRepository.Get(x => x.Id == postDto.LessonId);
+
+            for (int i = 0; i < lesson.Hours - 1; i++)
             {
                 Attance attance = new Attance
                 {
@@ -38,8 +46,8 @@ namespace UniverstyTMS.Controllers
                     LessonId = postDto.LessonId,
                     DVM = "-"
                 };
-            _attanceRepository.Add(attance);
-            _attanceRepository.Commit();
+                _attanceRepository.Add(attance);
+                _attanceRepository.Commit();
             }
 
             return StatusCode(201);
@@ -49,20 +57,21 @@ namespace UniverstyTMS.Controllers
         public ActionResult<List<AttanceGetDto>> GetAll()
         {
             var students = _studentRepository.GetAll(x => true);
-            var attances = _attanceRepository.GetAll(x=> true); 
-            
+            var attances = _attanceRepository.GetAll(x => true);
+
             List<AttanceGetDto> data = new List<AttanceGetDto>();
 
-            foreach(var student in students)
+            foreach (var student in students)
             {
-                AttanceGetDto attance = new AttanceGetDto {
+                AttanceGetDto attance = new AttanceGetDto
+                {
                     StudentId = student.Id,
                     FirstName = student.FirstName,
                     SurName = student.SurName,
                 };
-                foreach(var att in attances)
+                foreach (var att in attances)
                 {
-                    if(att.StudentId == student.Id)
+                    if (att.StudentId == student.Id)
                     {
                         DVMInAttanceGetDto dVMInAttanceGetDto = new DVMInAttanceGetDto
                         {
@@ -77,15 +86,15 @@ namespace UniverstyTMS.Controllers
         }
 
         [HttpGet("group/{id}/{lessonId}")]
-        public ActionResult<List<AttanceGetDto>> GroupAttance(int id,int lessonId)
+        public ActionResult<List<AttanceGetDto>> GroupAttance(int id, int lessonId)
         {
             var students = _studentRepository.GetAll(x => x.GroupId == id);
-            var attances = _attanceRepository.GetAll(x => x.LessonId==lessonId);
+            var attances = _attanceRepository.GetAll(x => x.LessonId == lessonId);
 
             List<AttanceGetDto> data = new List<AttanceGetDto>();
 
             foreach (var student in students)
-            {   
+            {
                 AttanceGetDto attance = new AttanceGetDto
                 {
                     StudentId = student.Id,
@@ -110,23 +119,73 @@ namespace UniverstyTMS.Controllers
 
 
         [HttpPut("group/{id}/{lessonId}")]
-        public ActionResult<List<AttancePutDto>> GroupAttanceEdit(int id,int lessonId,List<AttancePutDto> putDtos) 
+        public ActionResult<List<AttancePutDto>> GroupAttanceEdit(int id, int lessonId, List<AttancePutDto> putDtos)
         {
             var attances = _attanceRepository.GetAll(x => x.LessonId == lessonId);
 
             foreach (var item in putDtos)
             {
-               List<Attance> attanceDatas = attances.FindAll(x => x.StudentId == item.StudentId);
+                List<Attance> attanceDatas = attances.FindAll(x => x.StudentId == item.StudentId);
                 int idx = 0;
                 foreach (var attItem in attanceDatas)
                 {
-                    Attance updateAtt = _attanceRepository.Get(x=>x.Id == attItem.Id);
+                    Attance updateAtt = _attanceRepository.Get(x => x.Id == attItem.Id);
                     updateAtt.DVM = item.attance[idx].DVM;
                     _attanceRepository.Commit();
                     idx++;
                 }
             }
             return Ok();
+        }
+
+        [HttpGet("{id}")]
+        public ActionResult<List<AttanceGetDtoById>> GetAttanceById(int id)
+        {
+            var attances = _attanceRepository.GetAll(x => x.StudentId == id);
+            var lessons = _lessonRepository.GetAll(x => true);
+
+            var result = lessons.Select(lesson =>
+            {
+                var attanceForLesson = attances.Where(a => a.LessonId == lesson.Id && a.StudentId == id).ToList();
+
+                if (attanceForLesson.Count() > 0)
+                {
+                    return new LessonAndAttanceDto
+                    {
+                        Lesson = lesson,
+                        Attances = attanceForLesson
+                    };
+                }
+                return null;
+
+            }).ToList();
+
+
+            List<AttanceGetDtoById> data = new List<AttanceGetDtoById>();
+
+            foreach (var item in result)
+            {
+                if (item != null)
+                {
+                   int groupId = _studentRepository.Get(x => x.Id == item.Attances.FirstOrDefault().StudentId).GroupId;
+                   int teacherId = _groupLessonRepository.Get(x=>x.GroupId == groupId).TeacherId;
+                    var teacher = _teacherRepository.Get(x => x.Id == teacherId);
+                    AttanceGetDtoById getDto = new AttanceGetDtoById
+                    {
+                        Id = item.Lesson.Id,
+                        Name = item.Lesson.Name,
+                        Teacher = teacher.FirstName+" "+teacher.SurName,
+                        Time = item.Attances.Count(),
+                        Plus = item.Attances.FindAll(x => x.DVM == "+").Count(),
+                        Absance = item.Attances.FindAll(x => x.DVM == "-").Count(),
+                        Percentage = (100 / item.Attances.Count() * item.Attances.FindAll(x => x.DVM == "-").Count()),
+                    };
+
+                    data.Add(getDto);
+                }
+            }
+
+            return Ok(data);
         }
     }
 }

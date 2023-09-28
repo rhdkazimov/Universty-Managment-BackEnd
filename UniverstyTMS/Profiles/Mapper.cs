@@ -2,6 +2,7 @@
 using UniverstyTMS.Core.Entities;
 using UniverstyTMS.Dtos.AnnounceDtos;
 using UniverstyTMS.Dtos.AttanceDtos;
+using UniverstyTMS.Dtos.ContactFormDtos;
 using UniverstyTMS.Dtos.FacultyDtos;
 using UniverstyTMS.Dtos.GradeDtos;
 using UniverstyTMS.Dtos.GroupDtos;
@@ -48,32 +49,27 @@ namespace UniverstyTMS.Profiles
             CreateMap<StudentPostDto, Student>();
             CreateMap<Student, StudentLoginGetDto>();
             CreateMap<Teacher, TeacherLoginGetDto>();
-            // 
             CreateMap<Group, GroupStudentsGetDto>();
             CreateMap<Student, StudentInGroupGetDto>();
-            //
             CreateMap<Lesson, LessonGetDto>();
             CreateMap<LessonPostDto,Lesson>();
             CreateMap<GroupLessons,GroupLessonsGetDto>();
             CreateMap<GroupLessonsPostDto,GroupLessons>();
-
             CreateMap<Group, GroupInGroupLessonGetDto>();
             CreateMap<Lesson, LessonInGroupLessonGetDto>();
-
             CreateMap<Grades,GradeGetDto>();
             CreateMap<Student, StudentInGradeGetDto>();
             CreateMap<Lesson, LessonInGradeGetDto>();
             CreateMap<GradePostDto,Grades>();
             CreateMap<Teacher, TeacherInGroupLessonGetDto>();
-
             CreateMap<GroupLessons,TeacherGroupDto>();
             CreateMap<Group, GroupInTeacherGroupDto>();
             CreateMap<Lesson, LessonInTeacherGroupDto>();
             CreateMap<Lesson, LessonInFacultyProgramsGetDto>();
             CreateMap<Faculty, FacultyProgramsGetDto>();
-
             CreateMap<AttancePostDto, Attance>();
             CreateMap<Attance, AttanceGetDto>();
+            CreateMap<ContactFormPostDto,ContactForm>();
         }
     }
 }

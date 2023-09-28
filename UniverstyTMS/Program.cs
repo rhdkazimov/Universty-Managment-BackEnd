@@ -32,6 +32,7 @@ builder.Services.AddScoped<IGradesRepository, GradesRepository>();
 builder.Services.AddScoped<ILessonRepository, LessonRepository>();
 builder.Services.AddScoped<IGroupLessonRepository, GroupLessonRepository>();
 builder.Services.AddScoped<IAttanceRepository, AttanceRepository>();
+builder.Services.AddScoped<IContactFormRepository, ContactFormRepository>();
 
 builder.Services.AddFluentValidationRulesToSwagger();
 

@@ -14,11 +14,19 @@ namespace UniverstyTMS.Controllers
     public class StudentController : ControllerBase
     {
         private readonly IStudentRepository _studentRepository;
+        private readonly ILessonRepository _lessonRepository;
+        private readonly IAttanceRepository _attanceRepository;
+        private readonly IGroupLessonRepository _groupLessonRepository;
+        private readonly IGradesRepository _gradesRepository;
         private readonly IMapper _mapper;
 
-        public StudentController(IStudentRepository studentRepository,IMapper mapper)
+        public StudentController(IStudentRepository studentRepository, ILessonRepository lessonRepository, IAttanceRepository attanceRepository, IGroupLessonRepository groupLessonRepository, IGradesRepository gradesRepository, IMapper mapper)
         {
             _studentRepository = studentRepository;
+            _lessonRepository = lessonRepository;
+            _attanceRepository = attanceRepository;
+            _groupLessonRepository = groupLessonRepository;
+            _gradesRepository = gradesRepository;
             _mapper = mapper;
         }
 
@@ -32,6 +40,42 @@ namespace UniverstyTMS.Controllers
 
             _studentRepository.Add(student);
             _studentRepository.Commit();
+
+            var groupLesson = _groupLessonRepository.GetAll(x => x.GroupId == student.GroupId);
+
+            foreach (var item in groupLesson)
+            {
+
+                Grades grade = new Grades
+                {
+                    ORT = 0,
+                    SDF1 = 0,
+                    SDF2 = 0,
+                    SDF3 = 0,
+                    TSI = 0,
+                    SSI = 0,
+                    StudentId = student.Id,
+                    LessonId = item.LessonId,
+                };
+
+                _gradesRepository.Add(grade);
+                _gradesRepository.Commit();
+
+                Lesson lesson = _lessonRepository.Get(x => x.Id == item.LessonId);
+
+                for (int i = 0; i < lesson.Hours - 1; i++)
+                {
+                    Attance attance = new Attance
+                    {
+                        StudentId = student.Id,
+                        LessonId = lesson.Id,
+                        DVM = "-"
+                    };
+                    _attanceRepository.Add(attance);
+                    _attanceRepository.Commit();
+                }
+            }
+
 
             return StatusCode(201, new { student.Id });
         }

@@ -22,6 +22,7 @@ namespace UniverstyTMS.Data
         public DbSet<Lesson> Lessons { get; set; }
         public DbSet<GroupLessons> GroupLessons { get; set; }
         public DbSet<Attance> Attances { get; set; }
+        public DbSet<ContactForm> ContactForms { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

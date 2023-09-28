@@ -65,5 +65,13 @@ namespace UniverstyTMS.Controllers
             }
             return NoContent();
         }
+
+        [HttpGet("{id}")]
+        public ActionResult<List<GradeGetDto>> GetById(int id) 
+        {
+            var data = _mapper.Map<List<GradeGetDto>>(_gradesRepository.GetAll(x => x.StudentId == id, "Student", "Lesson"));
+
+            return Ok(data);
+        }
     }
 }

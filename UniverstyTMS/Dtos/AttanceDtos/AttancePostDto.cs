@@ -7,7 +7,6 @@ namespace UniverstyTMS.Dtos.AttanceDtos
     {
         public int StudentId { get; set; }
         public int LessonId { get; set; }
-        public int AttanceCount { get; set; }
     }
 
     public class AttancePostDtoValidator : AbstractValidator<AttancePostDto>

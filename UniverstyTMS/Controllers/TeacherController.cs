@@ -93,7 +93,7 @@ namespace UniverstyTMS.Controllers
             int studentIndex = 0;
             foreach (var student in studentsData)
             {
-                var studentGrade = _gradesRepository.Get(x=>x.Id == student.Id);
+                var studentGrade = _gradesRepository.Get(x=>x.StudentId == student.Id);
                 data.Students.Add(student);
                 data.Students[studentIndex].SDF1 = studentGrade.SDF1;
                 data.Students[studentIndex].SDF2= studentGrade.SDF2;
