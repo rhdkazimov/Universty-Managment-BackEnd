@@ -12,6 +12,7 @@ namespace UniverstyTMS.Services
         {
             _configuration = configuration;
         }
+
         public string GenerateToken(int id, string email, string name)
         {
             List<Claim> claims = new List<Claim>
