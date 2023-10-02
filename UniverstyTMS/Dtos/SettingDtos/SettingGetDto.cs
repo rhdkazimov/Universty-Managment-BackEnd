@@ -1,9 +1,8 @@
-﻿namespace UniverstyTMS.Dtos.SettingDtos
+﻿namespace UniverstyTMS.Dtos.SettingDtos;
+
+public class SettingGetDto
 {
-    public class SettingGetDto
-    {
-        public int Id { get; set; }
-        public string Key { get; set; }
-        public string Value { get; set; }
-    }
+    public int Id { get; set; }
+    public string Key { get; set; }
+    public string Value { get; set; }
 }

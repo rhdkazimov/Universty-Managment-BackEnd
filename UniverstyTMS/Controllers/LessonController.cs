@@ -72,7 +72,7 @@ namespace UniverstyTMS.Controllers
                 return NotFound();
 
             lesson.Name = putDto.Name;
-            lesson.FacultyId = lesson.FacultyId;
+            lesson.FacultyId = putDto.FacultyId;
             _lessonRepository.Commit();
 
             return NoContent();

@@ -1,5 +1,4 @@
 ﻿using FluentValidation;
-using UniverstyTMS.Dtos.SettingDtos;
 
 namespace UniverstyTMS.Dtos.LessonDtos
 {
