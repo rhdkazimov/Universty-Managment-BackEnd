@@ -7,6 +7,7 @@ using UniverstyTMS.Dtos.StudentDtos;
 using UniverstyTMS.Dtos.TeacherDtos;
 using UniverstyTMS.Dtos.UserDtos;
 using UniverstyTMS.Helper;
+using UniverstyTMS.Services;
 
 namespace UniverstyTMS.Controllers
 {
@@ -21,14 +22,16 @@ namespace UniverstyTMS.Controllers
         private readonly ITypeRepository _typeRepository;
         private readonly IFacultyRepository _facultyRepository;
         private readonly IMapper _mapper;
+        private readonly JwtService _jwtService;
 
-        public UserController(ISpecialtyRepository specialtyRepository,IGroupRepository groupRepository,ITeacherRepository teacherRepository,IStudentRepository studentRepository, ITypeRepository typeRepository,IFacultyRepository facultyRepository , IMapper mapper)
+        public UserController(ISpecialtyRepository specialtyRepository,IGroupRepository groupRepository,ITeacherRepository teacherRepository,IStudentRepository studentRepository, ITypeRepository typeRepository,IFacultyRepository facultyRepository , IMapper mapper, JwtService jwtService)
         {
             _specialtyRepository = specialtyRepository;
             _groupRepository = groupRepository;
             _teacherRepository = teacherRepository;
             _studentRepository = studentRepository;
             _mapper = mapper;
+            _jwtService = jwtService;
             _typeRepository = typeRepository;
             _facultyRepository = facultyRepository;
         }
@@ -46,7 +49,7 @@ namespace UniverstyTMS.Controllers
                 var specality = _specialtyRepository.Get(x => x.Id == specalityId);
                 data.Specialty = specality.Name;
                 data.Faculty = _facultyRepository.Get(x => x.Id == specality.FacultyId).Name;
-                return StatusCode(201, new { token="Token",user = data });
+                return StatusCode(201, new { token = _jwtService.GenerateToken(data.Id, data.Mail, data.FirstName), user = data });
             }
             Teacher teacher = _teacherRepository.Get(x => x.Id == postDto.Id);
             if(teacher!=null&&teacher.Password == postDto.Password)
@@ -55,7 +58,7 @@ namespace UniverstyTMS.Controllers
                 data.Type = _typeRepository.Get(x => x.Id == teacher.TypeId).Name;
                 data.Faculty = _facultyRepository.Get(x => x.Id == teacher.FacultyId).Name;
                 data.Img = "https://localhost:7046/uploads/teachers/" + data.Img;
-                return StatusCode(201, new { token = "Token", user = data });
+                return StatusCode(201, new { token = _jwtService.GenerateToken(data.Id,data.Mail,data.FirstName), user = data });
             }
 
             return StatusCode(404, new {msg="Sifre ve ya password sehvdir"});
