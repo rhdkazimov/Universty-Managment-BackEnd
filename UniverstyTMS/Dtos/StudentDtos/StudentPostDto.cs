@@ -39,7 +39,6 @@ namespace UniverstyTMS.Dtos.StudentDtos
             RuleFor(x => x.IncludePoint).NotEmpty();
             RuleFor(x => x.ImgFile).NotEmpty();
 
-
             RuleFor(x => x).Custom((x, context) =>
             {
                 if (x.ImgFile != null)
@@ -50,7 +49,13 @@ namespace UniverstyTMS.Dtos.StudentDtos
                     if (x.ImgFile.ContentType != "image/jpeg" && x.ImgFile.ContentType != "image/png")
                         context.AddFailure(nameof(x.ImgFile), "ImageFile must be image/jpeg or image/png");
                 }
-
+            });
+            RuleFor(x => x).Custom((x, content) =>
+            {
+                if (x.IncludePoint < 0 || x.IncludePoint > 700)
+                {
+                    content.AddFailure(nameof(x.IncludePoint), "IncludePoint should be between 0 and 700 ");
+                }
             });
         }
     }

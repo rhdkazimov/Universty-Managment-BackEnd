@@ -25,6 +25,42 @@ namespace UniverstyTMS.Dtos.GradeDtos
             RuleFor(x => x.SDF3).NotEmpty();
             RuleFor(x => x.TSI).NotEmpty();
             RuleFor(x => x.SSI).NotEmpty();
+
+            RuleFor(x => x).Custom((x, content) =>
+            {
+                if (x.SDF1 < 0 || x.SDF1 > 100)
+                {
+                    content.AddFailure(nameof(x.SDF1), "SDF1 should be between 0 and 100 ");
+                }
+            });
+            RuleFor(x => x).Custom((x, content) =>
+            {
+                if (x.SDF2 < 0 || x.SDF2 > 100)
+                {
+                    content.AddFailure(nameof(x.SDF2), "SDF2 should be between 0 and 100 ");
+                }
+            });
+            RuleFor(x => x).Custom((x, content) =>
+            {
+                if (x.SDF3 < 0 || x.SDF3 > 100)
+                {
+                    content.AddFailure(nameof(x.SDF3), "SDF3 should be between 0 and 100 ");
+                }
+            });
+            RuleFor(x => x).Custom((x, content) =>
+            {
+                if (x.TSI < 0 || x.TSI > 100)
+                {
+                    content.AddFailure(nameof(x.TSI), "TSI should be between 0 and 100 ");
+                }
+            });
+            RuleFor(x => x).Custom((x, content) =>
+            {
+                if (x.SSI < 0 || x.SSI > 100)
+                {
+                    content.AddFailure(nameof(x.SSI), "SSI should be between 0 and 100 ");
+                }
+            });
         }
     }
 }

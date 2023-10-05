@@ -2,20 +2,36 @@ using FluentValidation;
 using FluentValidation.AspNetCore;
 using MicroElements.Swashbuckle.FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using UniverstyTMS.Core.Entities;
 using UniverstyTMS.Core.Repositories;
 using UniverstyTMS.Data;
 using UniverstyTMS.Data.Repositories;
 using UniverstyTMS.Dtos.AnnounceDtos;
+using UniverstyTMS.Exceptions;
+using UniverstyTMS.Middlewares;
 using UniverstyTMS.Profiles;
 using UniverstyTMS.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+    .ConfigureApiBehaviorOptions(options =>
+    {
+        options.InvalidModelStateResponseFactory = context =>
+        {
+            var errors = context.ModelState.Where(x => x.Value.Errors.Count() > 0)
+            .Select(x => new RestExceptionError(x.Key, x.Value.Errors.First().ErrorMessage)).ToList();
+
+            return new BadRequestObjectResult(new { message = "", errors });
+        };
+    });
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -23,6 +39,15 @@ builder.Services.AddDbContext<UniverstyDbContext>(opt =>
 {
     opt.UseSqlServer(builder.Configuration.GetConnectionString("Default"));
 });
+
+builder.Services.AddIdentity<AppUser, IdentityRole>(opt =>
+{
+    opt.Password.RequireUppercase = false;
+    opt.Password.RequireLowercase = false;
+    opt.Password.RequireNonAlphanumeric = false;
+
+}).AddDefaultTokenProviders().AddEntityFrameworkStores<UniverstyDbContext>();
+
 
 builder.Services.AddScoped<IAnnounceRepository, AnnounceRepository>();
 builder.Services.AddScoped<ISettingsRepository, SettingsRepository>();
@@ -122,6 +147,7 @@ builder.Services.AddSwaggerGen(c =>
  });
 });
 
+
 var app = builder.Build();
 app.UseCors(MyAllowSpecificOrigins);
 app.UseDefaultFiles();
@@ -142,5 +168,6 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+app.UseMiddleware<ErrorHandlingMiddleware>();
 
 app.Run();

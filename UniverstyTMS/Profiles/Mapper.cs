@@ -16,7 +16,7 @@ using UniverstyTMS.Dtos.TypeDtos;
 
 namespace UniverstyTMS.Profiles
 {
-    public class Mapper :Profile
+    public class Mapper : Profile
     {
         public Mapper()
         {

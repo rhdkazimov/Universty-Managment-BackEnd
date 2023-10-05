@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using UniverstyTMS.Core.Entities;
@@ -12,6 +13,8 @@ namespace UniverstyTMS.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
+
     public class GroupController : ControllerBase
     {
         private readonly IGroupRepository _groupRepository;

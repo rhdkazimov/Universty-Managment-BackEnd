@@ -1,12 +1,8 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using UniverstyTMS.Core.Entities;
 using UniverstyTMS.Core.Repositories;
-using UniverstyTMS.Data.Repositories;
-using UniverstyTMS.Dtos.FacultyDtos;
-using UniverstyTMS.Dtos.GroupDtos;
 using UniverstyTMS.Dtos.LessonDtos;
 
 namespace UniverstyTMS.Controllers

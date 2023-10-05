@@ -13,6 +13,10 @@ C:\Users\99470\Desktop\CA Final Project\BackEnd\UniverstyTMS\UniverstyTMS\bin\De
 C:\Users\99470\Desktop\CA Final Project\BackEnd\UniverstyTMS\UniverstyTMS\bin\Debug\net6.0\FluentValidation.DependencyInjectionExtensions.dll
 C:\Users\99470\Desktop\CA Final Project\BackEnd\UniverstyTMS\UniverstyTMS\bin\Debug\net6.0\Humanizer.dll
 C:\Users\99470\Desktop\CA Final Project\BackEnd\UniverstyTMS\UniverstyTMS\bin\Debug\net6.0\MicroElements.Swashbuckle.FluentValidation.dll
+C:\Users\99470\Desktop\CA Final Project\BackEnd\UniverstyTMS\UniverstyTMS\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\99470\Desktop\CA Final Project\BackEnd\UniverstyTMS\UniverstyTMS\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\99470\Desktop\CA Final Project\BackEnd\UniverstyTMS\UniverstyTMS\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Users\99470\Desktop\CA Final Project\BackEnd\UniverstyTMS\UniverstyTMS\bin\Debug\net6.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 C:\Users\99470\Desktop\CA Final Project\BackEnd\UniverstyTMS\UniverstyTMS\bin\Debug\net6.0\Microsoft.Data.SqlClient.dll
 C:\Users\99470\Desktop\CA Final Project\BackEnd\UniverstyTMS\UniverstyTMS\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
 C:\Users\99470\Desktop\CA Final Project\BackEnd\UniverstyTMS\UniverstyTMS\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
@@ -21,6 +25,8 @@ C:\Users\99470\Desktop\CA Final Project\BackEnd\UniverstyTMS\UniverstyTMS\bin\De
 C:\Users\99470\Desktop\CA Final Project\BackEnd\UniverstyTMS\UniverstyTMS\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.SqlServer.dll
 C:\Users\99470\Desktop\CA Final Project\BackEnd\UniverstyTMS\UniverstyTMS\bin\Debug\net6.0\Microsoft.Extensions.Caching.Memory.dll
 C:\Users\99470\Desktop\CA Final Project\BackEnd\UniverstyTMS\UniverstyTMS\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\99470\Desktop\CA Final Project\BackEnd\UniverstyTMS\UniverstyTMS\bin\Debug\net6.0\Microsoft.Extensions.Identity.Core.dll
+C:\Users\99470\Desktop\CA Final Project\BackEnd\UniverstyTMS\UniverstyTMS\bin\Debug\net6.0\Microsoft.Extensions.Identity.Stores.dll
 C:\Users\99470\Desktop\CA Final Project\BackEnd\UniverstyTMS\UniverstyTMS\bin\Debug\net6.0\Microsoft.Identity.Client.dll
 C:\Users\99470\Desktop\CA Final Project\BackEnd\UniverstyTMS\UniverstyTMS\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
 C:\Users\99470\Desktop\CA Final Project\BackEnd\UniverstyTMS\UniverstyTMS\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
@@ -77,4 +83,3 @@ C:\Users\99470\Desktop\CA Final Project\BackEnd\UniverstyTMS\UniverstyTMS\obj\De
 C:\Users\99470\Desktop\CA Final Project\BackEnd\UniverstyTMS\UniverstyTMS\obj\Debug\net6.0\UniverstyTMS.pdb
 C:\Users\99470\Desktop\CA Final Project\BackEnd\UniverstyTMS\UniverstyTMS\obj\Debug\net6.0\UniverstyTMS.genruntimeconfig.cache
 C:\Users\99470\Desktop\CA Final Project\BackEnd\UniverstyTMS\UniverstyTMS\obj\Debug\net6.0\ref\UniverstyTMS.dll
-C:\Users\99470\Desktop\CA Final Project\BackEnd\UniverstyTMS\UniverstyTMS\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

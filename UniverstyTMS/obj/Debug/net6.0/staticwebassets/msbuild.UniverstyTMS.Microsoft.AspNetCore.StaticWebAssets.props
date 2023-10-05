@@ -32,6 +32,22 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\students\299f6f97-ff17-48de-9fca-709d2d3960d10025095360_10.jpg))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\students\35cee707-6f00-4b5c-b1d6-5533940ac2dd09bf7a72e69611c35f77c4ae4a97cc083ace1a4c_full.jpg))">
+      <SourceType>Package</SourceType>
+      <SourceId>UniverstyTMS</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/UniverstyTMS</BasePath>
+      <RelativePath>uploads/students/35cee707-6f00-4b5c-b1d6-5533940ac2dd09bf7a72e69611c35f77c4ae4a97cc083ace1a4c_full.jpg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\students\35cee707-6f00-4b5c-b1d6-5533940ac2dd09bf7a72e69611c35f77c4ae4a97cc083ace1a4c_full.jpg))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\students\72d92167-8ecd-42ce-a9e1-870406f76141jakob-owens-qoFQxxuk3QY-unsplash.jpg))">
       <SourceType>Package</SourceType>
       <SourceId>UniverstyTMS</SourceId>
@@ -47,6 +63,22 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\students\72d92167-8ecd-42ce-a9e1-870406f76141jakob-owens-qoFQxxuk3QY-unsplash.jpg))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\students\96d1c6c2-cada-41b0-930b-3479dce79f4109bf7a72e69611c35f77c4ae4a97cc083ace1a4c_full.jpg))">
+      <SourceType>Package</SourceType>
+      <SourceId>UniverstyTMS</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/UniverstyTMS</BasePath>
+      <RelativePath>uploads/students/96d1c6c2-cada-41b0-930b-3479dce79f4109bf7a72e69611c35f77c4ae4a97cc083ace1a4c_full.jpg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\students\96d1c6c2-cada-41b0-930b-3479dce79f4109bf7a72e69611c35f77c4ae4a97cc083ace1a4c_full.jpg))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\students\c63c0da3-d57c-41f6-9465-cc56f758c3d60025095360_10.jpg))">
       <SourceType>Package</SourceType>

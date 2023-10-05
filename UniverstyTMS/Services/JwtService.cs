@@ -13,7 +13,7 @@ namespace UniverstyTMS.Services
             _configuration = configuration;
         }
 
-        public string GenerateToken(int id, string email, string name)
+        public string GenerateToken(string email, string name)
         {
             List<Claim> claims = new List<Claim>
             {
@@ -21,7 +21,6 @@ namespace UniverstyTMS.Services
                 new Claim("Email",email),
                 new Claim("Name",name),
             };
-
 
 
             var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(_configuration["Security:Secret"]));

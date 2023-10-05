@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using UniverstyTMS.Core.Entities;
 using UniverstyTMS.Core.Repositories;
@@ -13,6 +14,8 @@ namespace UniverstyTMS.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
+
     public class TeacherController : ControllerBase
     {
         private readonly IGradesRepository _gradesRepository;

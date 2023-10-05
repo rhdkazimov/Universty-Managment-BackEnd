@@ -1,10 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using UniverstyTMS.Core.Entities;
 using UniverstyTMS.Data.Configurations;
 
 namespace UniverstyTMS.Data
 {
-    public class UniverstyDbContext:DbContext
+    public class UniverstyDbContext:IdentityDbContext
     {
         public UniverstyDbContext(DbContextOptions<UniverstyDbContext> options):base(options)
         {
@@ -23,7 +24,8 @@ namespace UniverstyTMS.Data
         public DbSet<GroupLessons> GroupLessons { get; set; }
         public DbSet<Attance> Attances { get; set; }
         public DbSet<ContactForm> ContactForms { get; set; }
-
+        public DbSet<AppUser> AppUsers { get; set; }
+ 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(AnnounceConfigration).Assembly);
