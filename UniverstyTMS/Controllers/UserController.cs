@@ -103,6 +103,11 @@ namespace UniverstyTMS.Controllers
                 IsAdmin = true,
             };
 
+            var isExistMail = await _userManager.FindByEmailAsync(createDto.Mail);
+
+            if (isExistMail != null)
+                return StatusCode(404,"Mail already is exist");
+
             var result = await _userManager.CreateAsync(user, createDto.Password);
             //await _userManager.AddToRoleAsync(user, "Admin");
 
@@ -112,9 +117,21 @@ namespace UniverstyTMS.Controllers
             return Ok(result);
         }
 
-        //public IActionResult RemoveAdmin()
-        //{
-        //    return Ok();
-        //}
+
+        [HttpDelete("admin/delete/{mail}")]
+        public async Task<ActionResult> RemoveAdmin(string mail)
+        {
+         AppUser admin =  await _userManager.FindByEmailAsync(mail);
+
+            if (admin == null) 
+                return NotFound();
+
+           var result = await _userManager.DeleteAsync(admin);
+
+            if (!result.Succeeded)
+                return StatusCode(400, "Something went wrong ");
+
+            return Ok();
+        }
     }
 }
