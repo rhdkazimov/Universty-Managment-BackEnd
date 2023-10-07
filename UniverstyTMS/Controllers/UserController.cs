@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 using UniverstyTMS.Core.Entities;
 using UniverstyTMS.Core.Repositories;
 using UniverstyTMS.Dtos.AppUserDtos;
@@ -16,6 +18,7 @@ namespace UniverstyTMS.Controllers
     public class UserController : ControllerBase
     {
         private readonly UserManager<AppUser> _userManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
         private readonly SignInManager<AppUser> _signInManager;
         private readonly ISpecialtyRepository _specialtyRepository;
         private readonly IGroupRepository _groupRepository;
@@ -26,10 +29,11 @@ namespace UniverstyTMS.Controllers
         private readonly IMapper _mapper;
         private readonly JwtService _jwtService;
         //usermanager<appuser> usermanager, signınmanager<appuser> signınmanager,
-        public UserController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, ISpecialtyRepository specialtyRepository, IGroupRepository groupRepository, ITeacherRepository teacherRepository, IStudentRepository studentRepository, ITypeRepository typeRepository, IFacultyRepository facultyRepository, IMapper mapper, JwtService jwtService)
+        public UserController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, RoleManager<IdentityRole> roleManager, ISpecialtyRepository specialtyRepository, IGroupRepository groupRepository, ITeacherRepository teacherRepository, IStudentRepository studentRepository, ITypeRepository typeRepository, IFacultyRepository facultyRepository, IMapper mapper, JwtService jwtService)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _roleManager = roleManager;
             _specialtyRepository = specialtyRepository;
             _groupRepository = groupRepository;
             _teacherRepository = teacherRepository;
@@ -80,10 +84,11 @@ namespace UniverstyTMS.Controllers
             if (!await _userManager.CheckPasswordAsync(user, loginDto.Password))
                 return Unauthorized();
 
+            var roles = await _userManager.GetRolesAsync(user);
 
             var responseData = new
             {
-                token = _jwtService.GenerateToken(user.Email, user.UserName),
+                token = _jwtService.GenerateToken(user,roles),
                 user
             };
 
@@ -109,7 +114,7 @@ namespace UniverstyTMS.Controllers
                 return StatusCode(404,"Mail already is exist");
 
             var result = await _userManager.CreateAsync(user, createDto.Password);
-            //await _userManager.AddToRoleAsync(user, "Admin");
+            //await _userManager.AddToRoleAsync(user, "Staff");
 
             if (!result.Succeeded)
                 return NotFound();
@@ -117,8 +122,8 @@ namespace UniverstyTMS.Controllers
             return Ok(result);
         }
 
-
         [HttpDelete("admin/delete/{mail}")]
+        [Authorize(Roles = "Staff")]
         public async Task<ActionResult> RemoveAdmin(string mail)
         {
          AppUser admin =  await _userManager.FindByEmailAsync(mail);
@@ -130,6 +135,17 @@ namespace UniverstyTMS.Controllers
 
             if (!result.Succeeded)
                 return StatusCode(400, "Something went wrong ");
+
+            return Ok();
+        }
+
+        [HttpGet("Role")]
+        public async Task<IActionResult> CreateRole()
+        {
+            await _roleManager.DeleteAsync(new IdentityRole("Member"));
+            await _roleManager.CreateAsync(new IdentityRole("Teacher"));
+            await _roleManager.CreateAsync(new IdentityRole("Student"));
+            //await _roleManager.CreateAsync(new IdentityRole("Admin"));
 
             return Ok();
         }
