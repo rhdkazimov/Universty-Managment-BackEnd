@@ -7,7 +7,7 @@ namespace UniverstyTMS.Dtos.SpecialtyDtos
     {
         public string Name { get; set; }
         public int FacultyId { get; set; }
-    }
+    }   
 
     public class SpecialtyPostDtoValidator : AbstractValidator<SpecialtyPostDto>
     {

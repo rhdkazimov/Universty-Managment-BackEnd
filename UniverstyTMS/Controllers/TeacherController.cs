@@ -82,8 +82,8 @@ namespace UniverstyTMS.Controllers
             return NoContent();
         }
 
-        [HttpGet("group/students/{id}")]
-        public ActionResult<GroupStudentsGetDto> GetGroupStudents(int id)
+        [HttpGet("group/students/{id}/{lessonId}")]
+        public ActionResult<GroupStudentsGetDto> GetGroupStudents(int id,int lessonId)
         {
             Group group = _groupRepository.Get(x => x.Id == id);
             if (group == null) return NotFound();
@@ -96,7 +96,7 @@ namespace UniverstyTMS.Controllers
             int studentIndex = 0;
             foreach (var student in studentsData)
             {
-                var studentGrade = _gradesRepository.Get(x=>x.StudentId == student.Id);
+                var studentGrade = _gradesRepository.Get(x=>x.StudentId == student.Id&&x.LessonId==lessonId);
                 data.Students.Add(student);
                 data.Students[studentIndex].SDF1 = studentGrade.SDF1;
                 data.Students[studentIndex].SDF2= studentGrade.SDF2;
