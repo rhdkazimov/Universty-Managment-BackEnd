@@ -99,6 +99,7 @@ namespace UniverstyTMS.Controllers
 
 
         [HttpPost("admin/register")]
+        [Authorize(Roles = "Staff")]
         public async Task<ActionResult<AdminCreateDto>> CreateAdmin(AdminCreateDto createDto)
         {
             AppUser user = new AppUser
@@ -139,14 +140,20 @@ namespace UniverstyTMS.Controllers
             return Ok();
         }
 
-        [HttpGet("Role")]
-        public async Task<IActionResult> CreateRole()
-        {
-            await _roleManager.DeleteAsync(new IdentityRole("Member"));
-            await _roleManager.CreateAsync(new IdentityRole("Teacher"));
-            await _roleManager.CreateAsync(new IdentityRole("Student"));
-            //await _roleManager.CreateAsync(new IdentityRole("Admin"));
+        //[HttpGet("Role")]
+        //public async Task<IActionResult> CreateRole()
+        //{
+        //    await _roleManager.DeleteAsync(new IdentityRole("Member"));
+        //    await _roleManager.CreateAsync(new IdentityRole("Teacher"));
+        //    await _roleManager.CreateAsync(new IdentityRole("Student"));
+        //    //await _roleManager.CreateAsync(new IdentityRole("Admin"));
 
+        //    return Ok();
+        //}
+
+        [HttpPost("Logout")]
+        public IActionResult LogOut()
+        {
             return Ok();
         }
     }
